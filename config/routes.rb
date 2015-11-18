@@ -9,10 +9,14 @@ RottenMangoes::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :users
+    resources :users do
+      get  :switch
+    end
   end
 
-  resources :users
+  resources :users do
+    get :switch_back
+  end
   resources :sessions, only: [:new, :create, :destroy]
   root to: 'movies#index'
 

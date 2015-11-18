@@ -47,6 +47,11 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def switch_back
+    switch_back_to_admin
+    redirect_to users_path
+  end
+
   protected
 
   def user_params

@@ -6,6 +6,6 @@
   <h3><%= user.full_name %></h3>
   <h5><%= (user.email)%></h5>
   <% if current_user and current_user.admin  %>
-    <%= link_to "edit", edit_user_path(user) %> | <%= link_to "delete", user_path(user), method: :delete, confirm: "You sure?" %>
+    <%= link_to "edit", edit_user_path(user) %> | <%= link_to "switch to user", admin_user_switch_path(user) %> | <%= link_to "delete", user_path(user), method: :delete, confirm: "You sure?" %>
   <% end %>
 <% end %>

@@ -42,6 +42,11 @@ class Admin::UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def switch
+    switch_to(params[:user_id])
+    redirect_to movies_path
+  end
+
   protected
 
   def user_params
