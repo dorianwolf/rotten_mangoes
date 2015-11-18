@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    UserMailer.delete_confirmation(@user).deliver
     @user.destroy
     session.clear if params[:id] == session[:id]
     redirect_to users_path
