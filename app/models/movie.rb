@@ -12,6 +12,13 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0
   end
 
+  def self.runtime_in_range(min)
+    max = 90 if min == 0
+    max = 120 if min == 90
+    max = 9999 if min == 120 or min == -1
+    where('runtime_in_minutes >= ? and runtime_in_minutes < ?', min, max)
+  end
+
   protected
 
   def release_date_is_in_the_past
