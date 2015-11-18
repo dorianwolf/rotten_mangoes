@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
     if input = params[:movie]
       title = "%#{input[:title]}%"
       director = "%#{input[:director]}%"
-      @movies = Movie.where('title like ? and director like ?', title, director).runtime_in_range(input[:runtime_in_minutes].to_i)
+      @movies = Movie.title_and_director(title, director).runtime_in_range(input[:runtime_in_minutes].to_i)
     else
       @movies = Movie.all
     end

@@ -8,6 +8,9 @@ class Movie < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  scope :title, -> (text) { where 'title like ?', text}
+  scope :title_and_director, -> (tit, dir) {title(tit).where('director like ?', dir)}
+
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0
   end

@@ -17,7 +17,8 @@ RottenMangoes::Application.routes.draw do
   resources :users do
     get :switch_back
   end
-  resources :sessions, only: [:new, :create, :destroy]
+
+  resource :session, only: [:new, :create, :destroy]
   root to: 'movies#index'
 
 end
